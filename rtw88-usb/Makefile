@@ -30,7 +30,7 @@ include $(INCLUDE_DIR)/package.mk
 define KernelPackage/rtw88-usb
   SUBMENU:=Wireless Drivers
   TITLE:=Realtek rtw88-usb head version
-   DEPENDS:=+kmod-cfg80211 +kmod-mac80211 +kmod-usb-core +@DRIVER_11N_SUPPORT +@DRIVER_11AC_SUPPORT
+   DEPENDS:=+kmod-cfg80211 +kmod-mac80211 +kmod-usb-core +rtl8821ce-firmware +rtl8822be-firmware +rtl8822ce-firmware +@DRIVER_11N_SUPPORT +@DRIVER_11AC_SUPPORT
   FILES:=\
 	$(PKG_BUILD_DIR)/rtw88_pci.ko \
 	$(PKG_BUILD_DIR)/rtw88_usb.ko \
