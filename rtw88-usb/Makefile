@@ -16,8 +16,8 @@ PKG_LICENSE_FILES:=
 
 PKG_SOURCE_URL:=https://github.com/ulli-kroll/rtw88-usb.git
 PKG_SOURCE_PROTO:=git
-# Branch master
-PKG_SOURCE_VERSION:=974a380cea6356e05557e846eb2190d804c3ca89
+# Branch backports to keep usint taskled_init
+PKG_SOURCE_VERSION:=f3229eea430f87783bb8c235c286a3a83f5a4321
 
 # PKG_MAINTAINER:=
 PKG_BUILD_PARALLEL:=1
