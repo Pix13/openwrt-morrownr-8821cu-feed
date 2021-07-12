@@ -16,8 +16,8 @@ PKG_LICENSE_FILES:=
 
 PKG_SOURCE_URL:=https://github.com/ulli-kroll/rtw88-usb.git
 PKG_SOURCE_PROTO:=git
-# Branch backports to keep usint taskled_init
-PKG_SOURCE_VERSION:=55687e7477154a4e8a0d0cd32ee4e1f9669180eb
+# Head of master branch as of 2021-07-12 because Rock Pi E switched to kernel 5.10
+PKG_SOURCE_VERSION:=dd05eec8e5ac934b3d8e67e8008228f842b4ce1c
 
 # PKG_MAINTAINER:=
 PKG_BUILD_PARALLEL:=1
