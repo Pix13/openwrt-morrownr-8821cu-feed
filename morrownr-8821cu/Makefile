@@ -8,16 +8,15 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=rtw88-usb
+PKG_NAME:=morrownr-8821cu
 PKG_RELEASE:=2
 
 PKG_LICENSE:=GPLv2
 PKG_LICENSE_FILES:=
 
-PKG_SOURCE_URL:=https://github.com/ulli-kroll/rtw88-usb.git
+PKG_SOURCE_URL:=https://github.com/morrownr/8821cu-20210118.git
 PKG_SOURCE_PROTO:=git
-# Head of master branch as of 2021-07-12 because Rock Pi E switched to kernel 5.10
-PKG_SOURCE_VERSION:=dd05eec8e5ac934b3d8e67e8008228f842b4ce1c
+PKG_SOURCE_VERSION:=76c4656cdc460ad47555851b672ea430fddc662b
 
 # PKG_MAINTAINER:=
 PKG_BUILD_PARALLEL:=1
@@ -25,9 +24,9 @@ PKG_BUILD_PARALLEL:=1
 include $(INCLUDE_DIR)/kernel.mk
 include $(INCLUDE_DIR)/package.mk
 
-define KernelPackage/rtw88-usb
+define KernelPackage/morrownr-8821cu
   SUBMENU:=Wireless Drivers
-  TITLE:=Realtek rtw88-usb head version
+  TITLE:=Realtek 8821cu's morrownr version
    DEPENDS:=+kmod-cfg80211 +kmod-mac80211 +kmod-usb-core +rtl8821ce-firmware +rtl8822be-firmware +rtl8822ce-firmware +@DRIVER_11N_SUPPORT +@DRIVER_11AC_SUPPORT
   FILES:=\
 	$(PKG_BUILD_DIR)/rtw88_pci.ko \
@@ -53,4 +52,4 @@ define Build/Compile
 		modules
 endef
 
-$(eval $(call KernelPackage,rtw88-usb))
+$(eval $(call KernelPackage,morrownr-8821cu))
