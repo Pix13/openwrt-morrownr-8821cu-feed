@@ -14,9 +14,9 @@ PKG_RELEASE:=2
 PKG_LICENSE:=GPLv2
 PKG_LICENSE_FILES:=
 
-PKG_SOURCE_URL:=https://github.com/morrownr/8821cu-20210118.git
+PKG_SOURCE_URL:=https://github.com/Pix13/8821cu-20210118.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=76c4656cdc460ad47555851b672ea430fddc662b
+PKG_SOURCE_VERSION:=34931b6d700928cc3192aa2a2f2cc6903a703184
 
 # PKG_MAINTAINER:=
 PKG_BUILD_PARALLEL:=1
@@ -30,8 +30,10 @@ define KernelPackage/morrownr-8821cu
    DEPENDS:=+kmod-cfg80211 +kmod-mac80211 +kmod-usb-core +rtl8821ce-firmware +@DRIVER_11N_SUPPORT +@DRIVER_11AC_SUPPORT
   FILES:=\
 	$(PKG_BUILD_DIR)/8821cu.ko
-  AUTOLOAD:=$(call AutoProbe, rtw88_8821cu)
+  AUTOLOAD:=$(call AutoProbe, 8821cu)
 endef
+
+
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C "$(LINUX_DIR)" \
