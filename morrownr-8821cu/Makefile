@@ -27,21 +27,9 @@ include $(INCLUDE_DIR)/package.mk
 define KernelPackage/morrownr-8821cu
   SUBMENU:=Wireless Drivers
   TITLE:=Realtek 8821cu's morrownr version
-   DEPENDS:=+kmod-cfg80211 +kmod-mac80211 +kmod-usb-core +rtl8821ce-firmware +rtl8822be-firmware +rtl8822ce-firmware +@DRIVER_11N_SUPPORT +@DRIVER_11AC_SUPPORT
+   DEPENDS:=+kmod-cfg80211 +kmod-mac80211 +kmod-usb-core +rtl8821ce-firmware +@DRIVER_11N_SUPPORT +@DRIVER_11AC_SUPPORT
   FILES:=\
-	$(PKG_BUILD_DIR)/rtw88_pci.ko \
-	$(PKG_BUILD_DIR)/rtw88_usb.ko \
-	$(PKG_BUILD_DIR)/rtw88_core.ko \
-	$(PKG_BUILD_DIR)/rtw88_8822cu.ko \
-	$(PKG_BUILD_DIR)/rtw88_8822ce.ko \
-	$(PKG_BUILD_DIR)/rtw88_8822c.ko \
-	$(PKG_BUILD_DIR)/rtw88_8822b.ko \
-	$(PKG_BUILD_DIR)/rtw88_8822be.ko \
-	$(PKG_BUILD_DIR)/rtw88_8822bu.ko \
-	$(PKG_BUILD_DIR)/rtw88_8723d.ko \
-	$(PKG_BUILD_DIR)/rtw88_8723de.ko \
-	$(PKG_BUILD_DIR)/rtw88_8821c.ko \
-	$(PKG_BUILD_DIR)/rtw88_8821cu.ko
+	$(PKG_BUILD_DIR)/8821cu.ko
   AUTOLOAD:=$(call AutoProbe, rtw88_8821cu)
 endef
 
