@@ -29,7 +29,8 @@ define KernelPackage/morrownr-8821cu
   TITLE:=Realtek 8821cu's morrownr version
    DEPENDS:=+@USB_SUPPORT +kmod-cfg80211 +kmod-mac80211 +rtl8821ce-firmware +@DRIVER_11N_SUPPORT +@DRIVER_11AC_SUPPORT
   FILES:=$(PKG_BUILD_DIR)/8821cu.ko
-  AUTOLOAD:=$(call AutoProbe, 8821cu)
+  AUTOLOAD:=$(call AutoProbe,8821cu)
+  MODPARAMS:="rtw_drv_log_level=0 rtw_led_ctrl=0 rtw_vht_enable=2 rtw_power_mgnt=1 rtw_beamform_cap=0 rtw_dfs_region_domain=1"
   PROVIDES:=kmod-rtl8821cu
 endef
 
