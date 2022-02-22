@@ -16,7 +16,7 @@ PKG_LICENSE_FILES:=
 
 PKG_SOURCE_URL:=https://github.com/Pix13/8821cu-20210118.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=34931b6d700928cc3192aa2a2f2cc6903a703184
+PKG_SOURCE_VERSION:=2c2b9ae607abd0b9a42c26ac8a79d6e5c15f1fac
 
 # PKG_MAINTAINER:=
 PKG_BUILD_PARALLEL:=1
@@ -27,18 +27,24 @@ include $(INCLUDE_DIR)/package.mk
 define KernelPackage/morrownr-8821cu
   SUBMENU:=Wireless Drivers
   TITLE:=Realtek 8821cu's morrownr version
-   DEPENDS:=+kmod-cfg80211 +kmod-mac80211 +kmod-usb-core +rtl8821ce-firmware +@DRIVER_11N_SUPPORT +@DRIVER_11AC_SUPPORT
-  FILES:=\
-	$(PKG_BUILD_DIR)/8821cu.ko
+   DEPENDS:=+@USB_SUPPORT +kmod-cfg80211 +kmod-mac80211 +rtl8821ce-firmware +@DRIVER_11N_SUPPORT +@DRIVER_11AC_SUPPORT
+  FILES:=$(PKG_BUILD_DIR)/8821cu.ko
   AUTOLOAD:=$(call AutoProbe, 8821cu)
+  PROVIDES:=kmod-rtl8821cu
 endef
 
+FILTERED_KERNEL_MAKE_FLAGS=$(filter-out KERNELRELEASE=$(LINUX_VERSION),$(KERNEL_MAKE_FLAGS))
 
-
+MAKE_OPTS:= \
+	$(FILTERED_KERNEL_MAKE_FLAGS) \
+	SUBDIRS="$(PKG_BUILD_DIR)" \
+	PROJECT_DIR="$(PKG_BUILD_DIR)" \
+	src="$(PKG_BUILD_DIR)" \
+	KSRC="$(LINUX_DIR)" 
+	
 define Build/Compile
-	+$(MAKE) $(PKG_JOBS) -C "$(LINUX_DIR)" \
-		$(KERNEL_MAKE_FLAGS) \
-		M="$(PKG_BUILD_DIR)" \
+	+$(MAKE) $(PKG_JOBS) -C "$(PKG_BUILD_DIR)" \
+		$(MAKE_OPTS) \
 		modules
 endef
 
